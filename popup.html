@@ -10,13 +10,18 @@
   <link rel="stylesheet" href="popup.css">
 </head>
 
-<body>
+<body id = "Body"> 
 <!--   I-Frame for script injection in order to test the extension using automated script. Uncomment the below line to test the code-->
 <!--   <iframe src="./test/test.html" style="width: 0px;height: 0px;border:0;" title="description"></iframe>-->
+ 
+<input type="button" id="dark_button" style = " margin-top: 10%; margin-left: 35%; border-radius: 20px; padding: 2%;" value="Dark Mode" />
+
+
+<div>
   <div class="container-fluid p-5 text-black">
     <label class="switch" title="Click here to save your copied text!!">
       <input type="checkbox" id="toggle-button" >
-      <span class="slider round"></span>
+      <span id = "toggler" class="slider round"></span>
     </label>
     <div class="text-center">
       <div class="row">
@@ -24,7 +29,7 @@
           <img src="images/paper-note-32.png" class='icon_32' id = "column" ></img>
         </div>
 
-        <div class="column headertext" >
+        <div id = "headertext1"class="column headertext" >
           <h2 >SimplyClip</h2>
         </div>
 
@@ -66,9 +71,12 @@
       </a>
     </div>
   </div>
+</div>
+
   <ul id="clipboard_list"></ul>
   <div id="snackbar">Text copied!</div>
   <script type="text/javascript" src="popup.js"></script>
 </body>
 
 </html>
+

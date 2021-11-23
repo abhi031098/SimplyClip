@@ -20,12 +20,46 @@ SOFTWARE.
 
 let _clipboardList = document.querySelector("#clipboard_list");
 let addButton = document.getElementById('add-btn');
+
+let darkButton = document.getElementById('dark_button');
+darkButton.addEventListener('click',(event)=> {
+
+
+    let BodyDiv = document.getElementById('Body');
+    let headertext = document.getElementById('headertext1');
+    let search = document.getElementById('searchText');
+    let header = document.getElementById('header');
+    let togging = document.getElementById('toggler');
+    // let _clipboardList1 = document.querySelector(".listdiv.p"); 
+    if(darkButton.value=="Dark Mode"){
+        darkButton.value="Light Mode";
+        BodyDiv.style.backgroundColor = 'black';
+        headertext.style.color = 'white';
+        search.style.backgroundColor = '#091d56';
+        header.style.backgroundColor = 'yellow';
+        togging.style.backgroundColor = '#22a195';
+        // _clipboardList1.style.backgroundColor = 'aliceblue';
+
+    }
+    else{
+        darkButton.value="Dark Mode";
+        BodyDiv.style.backgroundColor = 'white';
+        headertext.style.color = 'black';
+        search.style.backgroundColor = 'white';
+        header.style.backgroundColor = 'white';
+        togging.style.backgroundColor = 'black';
+    }  
+        
+});
+
+
 addButton.addEventListener('click', (event) => {
         let textitem = ''
         let emptyDiv = document.getElementById('empty-div');
         let downloadDiv1 = document.getElementById('download-btn1');
         let downloadDiv2 = document.getElementById('download-btn2');
         let searchInput = document.getElementById('searchText');
+        
         emptyDiv.classList.add('hide-div');
         downloadDiv1.style.display = 'block';
         downloadDiv2.style.display = 'block';
@@ -160,6 +194,7 @@ function addClipboardListItem(text) {
         editDiv = document.createElement("div"),
         contentDiv = document.createElement("div"),
         editImage = document.createElement("img");
+        // listDiv.className = 'Textfile';
     editImage.setAttribute("data-toggle", "tooltip");
     editImage.setAttribute("data-placement", "bottom");
     editImage.setAttribute("title", "Click to edit the text entry!");
@@ -168,6 +203,7 @@ function addClipboardListItem(text) {
     deleteImage.setAttribute("data-placement", "bottom");
     deleteImage.setAttribute("title", "Click to delete the text entry!");
     let listPara = document.createElement("p");
+    listPara.classList.add('paraColorLight');
     let listText = document.createTextNode(text);
     listPara.setAttribute("data-toggle", "tooltip");
     listPara.setAttribute("data-placement", "bottom");
@@ -354,7 +390,7 @@ function searchClipboardText() {
 var enabled = false;
 var myButton = document.getElementById('toggle-button');
 
-chrome.storage.local.get('enabled', data => {
+chrome.storage.local.get('enabled', (data) => {
     var myButton = document.getElementById('toggle-button');
     enabled = !!data.enabled;
     switchButton = document.getElementsByClassName('switch')[0]
@@ -444,3 +480,11 @@ function deleteAllText() {
     var ul = document.getElementById("clipboard_list");
     ul.innerHTML = "";
 }
+
+/**
+ * Changes the mode of the simply clip to Dark Mode
+ * @example
+ * colorChange()
+ */
+
+
